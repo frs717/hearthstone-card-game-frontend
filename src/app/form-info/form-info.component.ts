@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, Input} from '@angular/core';
+import {Info} from "../../Info";
 
 @Component({
   selector: 'app-form-info',
@@ -6,7 +7,8 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./form-info.component.scss']
 })
 export class FormInfoComponent implements OnInit {
-  @Output() isClickBtn= new EventEmitter<void>();
+  @Input() info!: Info;
+  @Output() isClickBtn= new EventEmitter<Info>();
   constructor() { }
 
   ngOnInit(): void {

@@ -1,9 +1,9 @@
 <body>
 <img class="text-logo" src="assets/logo-main.png" alt="">
 <!--<app-form-lobby *ngIf="isClickBtn"></app-form-lobby>-->
-<app-form-lobby *ngIf="lobby" (isClickBtn) ="onChanged()"></app-form-lobby>
-<app-form-info *ngIf="!lobby" (isClickBtn) ="onChanged()"></app-form-info>
-<img class="img-person" src="assets/person.png" alt="">
+<app-form-lobby *ngIf="lobby" (isClickBtn) ="onChanged($event)"></app-form-lobby>
+<app-form-info *ngIf="!lobby" [info]="info" (isClickBtn) ="onChanged($event)"></app-form-info>
+<!--<img class="img-person" src="assets/person.png" alt="">-->
 <img class="logo-card" src="assets/card-main.png" alt="">
 
 </body>

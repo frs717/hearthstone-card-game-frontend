@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
+import {Info} from "../../Info";
 
 @Component({
   selector: 'app-form-lobby',
@@ -10,7 +12,7 @@ import * as SockJS from 'sockjs-client';
 })
 
 export class FormLobbyComponent implements OnInit {
-  @Output() isClickBtn = new EventEmitter<void>();
+  @Output() isClickBtn = new EventEmitter<any>();
   tittle = 'Создать игру';
   flag = true;
   stompClient: any;
@@ -47,7 +49,7 @@ export class FormLobbyComponent implements OnInit {
   }
 
   hiddenForm() {
-    this.isClickBtn.emit();
+    this.isClickBtn.emit(new Info(this.form.value.name, this.form.value.idGame));
   }
   connect() {
     const socket = new SockJS('http://localhost:8080/ws');
@@ -73,6 +75,51 @@ export class FormLobbyComponent implements OnInit {
       JSON.stringify({'name':"nastyaaaaaaa"})
     );
   }
+  // create(){
+  //   if (this.stompClient != null) {
+  //     this.stompClient.disconnect();
+  //   }
+  //   if (this.form.value.name) {
+  //     var socket = new SockJS('/ws');
+  //     this.stompClient = Stomp.over(socket);
+  //     this.stompClient.connect({}, onCreated, onConnectedError);
+  //   }
+  //  // event.preventDefault();
+  // }
+  //
+  //  onMessageReceived(payload:any) {
+  //   let lobby = JSON.parse(payload.body);
+  //   this.hiddenForm();
+  //
+  //   lobbyInfoLabel.textContent = 'lobby id: ' + lobby.id;
+  //   if (lobby.players.length > 0) {
+  //     lobbyPlayersInfoLabel.textContent = 'Players:';
+  //   }
+  //   for (let i = 0; i < lobby.players.length; i++) {
+  //     lobbyPlayersInfoLabel.textContent += ' ' + lobby.players[i].username;
+  //   }
+  // }
+  //
+  //
+  // successfulCreated(payload:any) {
+  //   let lobby = JSON.parse(payload.body);
+  //   this.stompClient.subscribe('/topic/public/' + lobby.id, onMessageReceived);
+  //   console.log('!!!' + lobby.id);
+  //   onMessageReceived(payload);
+  // }
+  //
+  //  onCreated() {
+  //   this.stompClient.subscribe('/user/queue/errors', onError);
+  //   this.stompClient.subscribe('/user/queue/create',
+  //
+  //
+  //   stompClient.send("/app/lobby.create",
+  //     {},
+  //     JSON.stringify({username: username, lobbyId: lobbyId})
+  //   )
+  //   connectingElement.classList.add('hidden');
+  // }
+
 }
 
 
