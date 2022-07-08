@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AngCardGame</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <head>
+    <base href="/">
+  </head>
+  <script>
+    let xmlHttpRequest = new XMLHttpRequest();
+    xmlHttpRequest.open("GET", "localhost:8080/test");
+
+    xmlHttpRequest.onload = function (){
+      alert(xmlHttpRequest.response);
+    }
+
+    xmlHttpRequest.send();
+  </script>
+</head>
+<body>
+<app-root>
+</app-root>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<body>
+<img class="text-logo" src="assets/logo-main.png" alt="">
+<!--<app-form-lobby *ngIf="isClickBtn"></app-form-lobby>-->
+<app-form-lobby *ngIf="lobby" (isClickBtn) ="onChanged()"></app-form-lobby>
+<app-form-info *ngIf="!lobby" (isClickBtn) ="onChanged()"></app-form-info>
+<img class="img-person" src="assets/person.png" alt="">
+<img class="logo-card" src="assets/card-main.png" alt="">
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="main.js"></script>
+
