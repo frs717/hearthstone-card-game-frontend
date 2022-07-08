@@ -57,7 +57,7 @@ export class FormLobbyComponent implements OnInit {
       _this.setConnected(true);
       console.log('Connected: ' + frame);
       _this.stompClient.subscribe('/topic/public/test', function (hello: any) {
-        _this.showGreeting(JSON.parse(hello.body).id);
+       alert("hello")
       });
     });
   }
