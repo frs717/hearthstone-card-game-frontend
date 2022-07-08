@@ -5,23 +5,28 @@ import * as SockJS from 'sockjs-client';
 import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 import {Info} from "../../Info";
 
+let stompClient: any;
+let username: String;
+let lobbyId: String;
+let form: any;
+
 @Component({
   selector: 'app-form-lobby',
   templateUrl: './form-lobby.component.html',
   styleUrls: ['./form-lobby.component.scss'],
 })
 
+
 export class FormLobbyComponent implements OnInit {
   @Output() isClickBtn = new EventEmitter<any>();
   tittle = 'Создать игру';
   flag = true;
-  stompClient: any;
+//  stompClient: any;
   disabled = true;
   greetings: string[] = [];
   name!: string;
 
   constructor() {
-
   }
 
   setConnected(connected: boolean) {
@@ -31,6 +36,7 @@ export class FormLobbyComponent implements OnInit {
       this.greetings = [];
     }
   }
+
   form!: FormGroup;
   btnInEnabled = false;
   btnCreateEnabled = false;
@@ -51,75 +57,103 @@ export class FormLobbyComponent implements OnInit {
   hiddenForm() {
     this.isClickBtn.emit(new Info(this.form.value.name, this.form.value.idGame));
   }
-  connect() {
-    const socket = new SockJS('http://localhost:8080/ws');
-    this.stompClient = Stomp.over(socket);
-    const _this = this;
-    this.stompClient.connect({}, function (frame:object) {
-      _this.setConnected(true);
-      console.log('Connected: ' + frame);
-      _this.stompClient.subscribe('/topic/public/test', function (hello: any) {
-       alert("hello")
-      });
-    });
+
+  create() {
+    form = this;
+    create();
   }
 
-  showGreeting(message: string) {
-    this.greetings.push(message);
+  join() {
+    form = this;
+    join();
   }
-
-  sendName() {
-    this.stompClient.send(
-      '/app/test.test',
-      {},
-      JSON.stringify({'name':"nastyaaaaaaa"})
-    );
-  }
-  // create(){
-  //   if (this.stompClient != null) {
-  //     this.stompClient.disconnect();
-  //   }
-  //   if (this.form.value.name) {
-  //     var socket = new SockJS('/ws');
-  //     this.stompClient = Stomp.over(socket);
-  //     this.stompClient.connect({}, onCreated, onConnectedError);
-  //   }
-  //  // event.preventDefault();
-  // }
-  //
-  //  onMessageReceived(payload:any) {
-  //   let lobby = JSON.parse(payload.body);
-  //   this.hiddenForm();
-  //
-  //   lobbyInfoLabel.textContent = 'lobby id: ' + lobby.id;
-  //   if (lobby.players.length > 0) {
-  //     lobbyPlayersInfoLabel.textContent = 'Players:';
-  //   }
-  //   for (let i = 0; i < lobby.players.length; i++) {
-  //     lobbyPlayersInfoLabel.textContent += ' ' + lobby.players[i].username;
-  //   }
-  // }
-  //
-  //
-  // successfulCreated(payload:any) {
-  //   let lobby = JSON.parse(payload.body);
-  //   this.stompClient.subscribe('/topic/public/' + lobby.id, onMessageReceived);
-  //   console.log('!!!' + lobby.id);
-  //   onMessageReceived(payload);
-  // }
-  //
-  //  onCreated() {
-  //   this.stompClient.subscribe('/user/queue/errors', onError);
-  //   this.stompClient.subscribe('/user/queue/create',
-  //
-  //
-  //   stompClient.send("/app/lobby.create",
-  //     {},
-  //     JSON.stringify({username: username, lobbyId: lobbyId})
-  //   )
-  //   connectingElement.classList.add('hidden');
-  // }
-
 }
 
+function create() {
+  if (stompClient != null) {
+    stompClient.disconnect();
+  }
+  if (form.form.value.name) {
+    var socket = new SockJS('http://localhost:8080/ws');
+    stompClient = Stomp.over(socket);
+    username = form.form.value.name;
+    stompClient.connect({}, onCreated, onConnectedError);
+  }
 
+  // event.preventDefault();
+}
+
+function onCreated() {
+  stompClient.subscribe('/user/queue/errors', onError);
+  stompClient.subscribe('/user/queue/create', successfulCreated);
+
+  stompClient.send("/app/lobby.create",
+    {},
+    JSON.stringify({username: username})
+  )
+  //connectingElement.classList.add('hidden');
+}
+
+function successfulCreated(payload: any) {
+  let lobby = JSON.parse(payload.body);
+  stompClient.subscribe('/topic/public/' + lobby.id, onMessageReceived);
+  console.log('lobby: ' + payload.body);
+  onMessageReceived(payload);
+}
+
+function join() {
+  if (stompClient != null) {
+    stompClient.disconnect();
+  }
+  //username = document.querySelector('#login').value.trim();
+  //lobbyId = document.querySelector('#lobbyId').value.trim();
+  // if (form.form.value.name != null && form.form.value.lobbyId != null) {
+
+  var socket = new SockJS('http://localhost:8080/ws');
+  stompClient = Stomp.over(socket);
+  stompClient.connect({}, onJoined, onConnectedError);
+  username = form.form.value.name;
+  lobbyId = form.form.value.idGame;
+  // }
+}
+
+function onJoined() {
+  stompClient.subscribe('/user/queue/errors', onError);
+  stompClient.subscribe('/topic/public/' + lobbyId, onMessageReceived);
+  alert(username + ' ' + lobbyId);
+  stompClient.send("/app/lobby.join",
+    {},
+    JSON.stringify({username: username, lobbyId: lobbyId})
+  )
+  //connectingElement.classList.add('hidden');
+}
+
+function onMessageReceived(payload: any) {
+  let lobby = JSON.parse(payload.body);
+  form.hiddenForm();
+  let info = "";
+  //lobbyInfoLabel.textContent = 'lobby id: ' + lobby.id;
+  info += 'Lobby id: ' + lobby.id + '\n';
+  if (lobby.players.length > 0) {
+    //lobbyPlayersInfoLabel.textContent = 'Players:';
+    info += 'Players: \n';
+  }
+
+  for (let i = 0; i < lobby.players.length; i++) {
+    //lobbyPlayersInfoLabel.textContent += ' ' + lobby.players[i].username;
+    info += lobby.players[i].username + '\n';
+  }
+  alert(info);
+}
+
+function onConnectedError(error: any) {
+  // connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
+  // connectingElement.style.color = 'red';
+  alert("Connection error")
+}
+
+function onError(payload: any) {
+  console.log('Error: ' + payload.body);
+  stompClient.disconnect();
+  // stompClient = null;
+}
