@@ -6,7 +6,7 @@
     <input formControlName="idGame" type="number" placeholder="id">
   </p>
     <div  class="buttons">
-      <button  [disabled]="!btnInEnabled" (click)="hiddenForm()" type="submit" class="formBtn">Войти</button >
+      <button  [disabled]="!btnInEnabled" (click)="connect()"  type="submit" class="formBtn">Войти</button >
       <button [disabled]="!btnCreateEnabled" (click)="hiddenForm()"  type="submit" class="formBtn btnCreate">Создать</button>
 </div>
 </form>
