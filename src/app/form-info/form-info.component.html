@@ -1,12 +1,13 @@
 <form action="" class="form-join" >
-  <p>id
+  <p>id игры
     {{info.idGame}}
   </p>
-  <p>name
-    {{info.name}}
-  </p>
-  <p></p>
+<!--  <p>name-->
+<!--    {{info.name}}-->
+<!--  </p>-->
+  <p>Игроки:</p>
+  <p  *ngFor="let player of players">{{player.username}}</p>
   <div  class="buttons">
-    <button  (click)="leave()" type="submit" class="formBtn">Покинуть</button >
+    <button (click)="leave()" type="submit" class="formBtn"> Покинуть</button>
   </div>
 </form>

@@ -46,25 +46,25 @@ export class FormLobbyComponent implements OnInit {
     this.form.valueChanges.subscribe(x => {
 
       this.btnCreateEnabled = x.name;
-      this.btnInEnabled = x.name && x.idGame;
+      this.btnInEnabled = x.name && (x.idGame || x.idGame ===0);
     });
   }
 
   hiddenForm() {
-    this.isClickBtn.emit(new Info(this.form.value.name, this.form.value.idGame));
+    this.isClickBtn.emit(new Info(this.form.value.idGame, this.form.value.name));
     console.log("wdqw")
     this.onFormChanged.emit("info")
   }
 
   create() {
     this.hiddenForm()
-    AppComp.setForm(this);
-    AppComp.create();
+    // AppComp.setForm(this);
+    // AppComp.create();
   }
 
   join() {
     this.hiddenForm()
-    AppComp.setForm(this);
-    AppComp.join();
+    // AppComp.setForm(this);
+    // AppComp.join();
   }
 }

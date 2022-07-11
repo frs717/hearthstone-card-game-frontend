@@ -11,9 +11,20 @@ import {AppComponent} from "../app.component";
 })
 export class FormInfoComponent implements OnInit {
   @Input() info!: Info;
+  @Input() players!: any;
   @Input() nameInfo: any;
   @Output() isClickBtn= new EventEmitter<any>();
   @Output() onFormChanged= new EventEmitter<any>();
+  @Output() onLeave= new EventEmitter<any>();
+  // players = "qwd"
+  // players = [
+  //   {
+  //     name: "a"
+  //   },
+  //   {
+  //     name: "b"
+  //   },
+  // ];
 
 
   constructor() { }
@@ -22,8 +33,9 @@ export class FormInfoComponent implements OnInit {
 
   }
   leave(){
-    AppComp.leave();
+
     // this.isClickBtn.emit()
     this.onFormChanged.emit("lobby")
+    this.onLeave.emit()
   }
 }
