@@ -1,11 +1,12 @@
 <form action="" class="form-join" >
-  <p>
-   {{info.name}}
-  </p>
-  <p>
+  <p>id
     {{info.idGame}}
   </p>
+  <p>name
+    {{info.name}}
+  </p>
+  <p></p>
   <div  class="buttons">
-    <button type="submit" class="formBtn">Покинуть</button >
+    <button  (click)="leave()" type="submit" class="formBtn">Покинуть</button >
   </div>
 </form>
