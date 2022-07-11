@@ -62,7 +62,6 @@ export class AppComponent implements OnInit {
     } else {
       this.create()
     }
-
   }
 
   formChanged(activeForm: any) {
@@ -80,21 +79,12 @@ export class AppComponent implements OnInit {
     //connectingElement.classList.add('hidden');
   }
 
-
-
   successfulCreated = (payload:any) =>{
   let lobby = JSON.parse(payload.body);
   this.stompClient.subscribe('/topic/public/' + lobby.id, this.onMessageReceived);
   console.log('lobby: ' + payload.body);
   this.onMessageReceived(payload);
 }
-  //
-  // successfulCreated(payload: any) {
-  //   let lobby = JSON.parse(payload.body);
-  //   this.stompClient.subscribe('/topic/public/' + lobby.id, this.onMessageReceived);
-  //   console.log('lobby: ' + payload.body);
-  //   this.onMessageReceived(payload);
-  // }
 
   create = () =>{
     if (this.stompClient != null) {

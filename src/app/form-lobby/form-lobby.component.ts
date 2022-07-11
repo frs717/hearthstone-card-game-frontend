@@ -50,20 +50,29 @@ export class FormLobbyComponent implements OnInit {
     });
   }
 
-  hiddenForm() {
-    this.isClickBtn.emit(new Info(this.form.value.idGame, this.form.value.name));
-    console.log("wdqw")
-    this.onFormChanged.emit("info")
-  }
-
   create() {
-    this.hiddenForm()
+    let info = new Info(this.form.value.idGame, this.form.value.name);
+    this.isClickBtn.emit(info);
+    this.onFormChanged.emit("info")
     // AppComp.setForm(this);
     // AppComp.create();
   }
 
   join() {
-    this.hiddenForm()
+    let info = new Info(this.form.value.idGame, this.form.value.name);
+    let xhr = new XMLHttpRequest();
+
+    xhr.onload = () =>{
+      if(xhr.status===200){
+        this.isClickBtn.emit(info);
+        this.onFormChanged.emit("info")
+      } else {
+        alert("Такого лобби не существует")
+      }
+    }
+    xhr.open("GET", `http://localhost:8080/lobby.check?id=${this.form.value.idGame}`)
+
+    xhr.send()
     // AppComp.setForm(this);
     // AppComp.join();
   }

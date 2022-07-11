@@ -33,7 +33,6 @@ export class FormInfoComponent implements OnInit {
 
   }
   leave(){
-
     // this.isClickBtn.emit()
     this.onFormChanged.emit("lobby")
     this.onLeave.emit()
