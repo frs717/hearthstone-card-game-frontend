@@ -71,12 +71,16 @@ export class AppComponent implements OnInit {
   onCreated = () =>{
     this.stompClient.subscribe('/user/queue/errors', this.onError);
     this.stompClient.subscribe('/user/queue/create', this.successfulCreated);
-
+    this.stompClient.subscribe('/user/queue/game/start',this.onGameStarted);
     this.stompClient.send("/app/lobby.create",
       {},
       JSON.stringify({username: this.username})
     )
     //connectingElement.classList.add('hidden');
+  }
+
+  onGameStarted(){
+    alert('kkkkkkkk')
   }
 
   successfulCreated = (payload:any) =>{
@@ -114,6 +118,7 @@ export class AppComponent implements OnInit {
   onJoined = () => {
     this.stompClient.subscribe('/user/queue/errors', this.onError);
     this.stompClient.subscribe('/topic/public/' + this.info.idGame, this.onMessageReceived);
+    this.stompClient.subscribe('/user/queue/game/start',this.onGameStarted);
     this.stompClient.send("/app/lobby.join",
       {},
       JSON.stringify({username: this.username, lobbyId: this.info.idGame})
@@ -122,24 +127,8 @@ export class AppComponent implements OnInit {
   }
 
   onMessageReceived = (payload: any) =>{
-    // let lobby = JSON.parse(payload.body);
-    // let info = "";
-    // //lobbyInfoLabel.textContent = 'lobby id: ' + lobby.id;
-    // info += 'Lobby id: ' + lobby.id + '\n';
-    // if (lobby.players.length > 0) {
-    //   //lobbyPlayersInfoLabel.textContent = 'Players:';
-    //   info += 'Players: \n';
-    // }
-    // //-------------------------------------------------
-    // for (let i = 0; i < lobby.players.length; i++) {
-    //   //lobbyPlayersInfoLabel.textContent += ' ' + lobby.players[i].username;
-    //   info += lobby.players[i].username + '\n';
-    // }
-
     let lobby = JSON.parse(payload.body);
-    this.players = lobby.players;
-
-
+    this.players = lobby.users;
   }
 
   onConnectedError=() =>{
@@ -156,9 +145,6 @@ export class AppComponent implements OnInit {
   leave=() =>{
     this.stompClient.disconnect();
     this.stompClient = null;
-    // joiningLobbyForm.classList.remove('hidden');
-    // creatingLobbyForm.classList.remove('hidden');
-    // lobbyInfoForm.classList.add('hidden');
   }
 }
 

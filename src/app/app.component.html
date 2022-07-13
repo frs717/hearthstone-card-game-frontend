@@ -1,10 +1,8 @@
 <body>
 <img class="text-logo" src="assets/logo-main.png" alt="">
-<!--<app-form-lobby *ngIf="isClickBtn"></app-form-lobby>-->
-<!--<app-form-lobby *ngIf="lobby" (isClickBtn) ="onChanged($event)"></app-form-lobby>-->
-<!--<app-form-info *ngIf="!lobby" [info]="info" (isClickBtn) ="onChanged($event)" (ev)="lobby=true"></app-form-info>-->
 <app-form-lobby *ngIf="activeForm=='lobby'" (isClickBtn) ="onChanged($event)" (onFormChanged) ="formChanged($event)"></app-form-lobby>
 <app-form-info *ngIf="activeForm=='info'" [players]="players"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
+<!--<app-between-fight></app-between-fight>-->
 <!--<img class="img-person" src="assets/person.png" alt="">-->
 <img class="logo-card" src="assets/card-main.png" alt="">
 
