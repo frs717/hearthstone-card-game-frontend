@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-between-fight',
@@ -7,15 +7,20 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 })
 export class BetweenFightComponent implements OnInit {
   @Output() onFormChange= new EventEmitter<any>();
-  @Output() onStart= new EventEmitter<any>();
+  @Output() onUpdateShop= new EventEmitter<any>();
+  @Input()
+  player:any;
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  startGame(){
-    // this.isClickBtn.emit()
-    this.onFormChange.emit("betweenGame")
-    this.onStart.emit()
+ //  startGame(){
+ //    // this.isClickBtn.emit()
+ // //   this.onFormChange.emit("betweenGame")
+ //    this.onStart.emit()
+ //  }
+  updateShop(): void {
+    this.onUpdateShop.emit();
   }
 }

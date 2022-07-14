@@ -43,8 +43,9 @@ export class AppComponent implements OnInit {
   info!: Info;
   username!: string;
   activeForm = 'lobby';
-
   stompClient!:any;
+  w:boolean=false;
+  player:any;
 
   @Output() outputInfo= new EventEmitter<any>();
   players: any;
@@ -79,8 +80,15 @@ export class AppComponent implements OnInit {
     //connectingElement.classList.add('hidden');
   }
 
-  onGameStarted(){
-    alert('kkkkkkkk')
+  onGameStarted=(payload:any)=>{
+    this.stompClient.subscribe('/user/queue/game/updateShop',this.onUpdateShop);
+    this.activeForm='betweenFight';
+    this.player = JSON.parse(payload.body);
+  }
+
+  onUpdateShop=(payload:any) => {
+    // alert(payload)
+    this.player = JSON.parse(payload.body);
   }
 
   successfulCreated = (payload:any) =>{
@@ -123,7 +131,6 @@ export class AppComponent implements OnInit {
       {},
       JSON.stringify({username: this.username, lobbyId: this.info.idGame})
     )
-    //connectingElement.classList.add('hidden');
   }
 
   onMessageReceived = (payload: any) =>{
@@ -132,8 +139,6 @@ export class AppComponent implements OnInit {
   }
 
   onConnectedError=() =>{
-    // connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
-    // connectingElement.style.color = 'red';
     alert("Connection error")
   }
   onError = (payload: any) => {
@@ -145,6 +150,13 @@ export class AppComponent implements OnInit {
   leave=() =>{
     this.stompClient.disconnect();
     this.stompClient = null;
+  }
+
+  updateShop() {
+    this.stompClient.send("/app/game/updateShop",
+      {},
+      JSON.stringify({username: this.username, lobbyId: this.info.idGame})
+    )
   }
 }
 

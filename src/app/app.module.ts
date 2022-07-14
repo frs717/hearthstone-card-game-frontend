@@ -8,6 +8,11 @@ import { FormLobbyComponent } from './form-lobby/form-lobby.component';
 import { FormInfoComponent } from './form-info/form-info.component';
 import { BetweenFightComponent } from './between-fight/between-fight.component';
 import { CardShopComponent } from './card-shop/card-shop.component';
+import { InBattleComponent } from './in-battle/in-battle.component';
+import { CardInventoryComponent } from './card-inventory/card-inventory.component';
+import { CardOnTheFieldComponent } from './card-on-the-field/card-on-the-field.component';
+import { CardInBattleComponent } from './card-in-battle/card-in-battle.component';
+import { ImgHeartstoneComponent } from './img-heartstone/img-heartstone.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +21,11 @@ import { CardShopComponent } from './card-shop/card-shop.component';
     FormInfoComponent,
     BetweenFightComponent,
     CardShopComponent,
+    InBattleComponent,
+    CardInventoryComponent,
+    CardOnTheFieldComponent,
+    CardInBattleComponent,
+    ImgHeartstoneComponent,
   ],
   imports: [
     BrowserModule,

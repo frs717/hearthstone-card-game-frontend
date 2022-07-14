@@ -1,11 +1,10 @@
 <body>
-<img class="text-logo" src="assets/logo-main.png" alt="">
+<app-img-heartstone *ngIf="activeForm!=='betweenFight'"></app-img-heartstone>
 <app-form-lobby *ngIf="activeForm=='lobby'" (isClickBtn) ="onChanged($event)" (onFormChanged) ="formChanged($event)"></app-form-lobby>
 <app-form-info *ngIf="activeForm=='info'" [players]="players"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
-<!--<app-between-fight></app-between-fight>-->
 <!--<img class="img-person" src="assets/person.png" alt="">-->
-<img class="logo-card" src="assets/card-main.png" alt="">
-
+<app-between-fight *ngIf="activeForm=='betweenFight'" [player]="player" (onUpdateShop)="updateShop()"></app-between-fight>
+<!--<img class="logo-card" src="assets/card-main.png" alt="">-->
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>

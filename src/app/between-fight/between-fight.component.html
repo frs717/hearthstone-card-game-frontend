@@ -1,1 +1,35 @@
-<p>eedkdjskdjskdj</p>
+<body>
+<div class="wrapper">
+  <div class="playersDiv">
+    <div class="players">
+      <p class="player">Первый игрок-(хп)</p>
+      <p class="player">Второй игрок-</p>
+      <p class="player">3 игрок-</p>
+      <p class="player">4 игрок-</p>
+    </div>
+  </div>
+  <div class="content">
+    <div class="shop">
+      <div class="buttonsShop">
+        <div class="btnImprove">
+          <button class="btnShop">Улучшить</button>
+        </div>
+        <div class="rightBtnShop">
+          <button class="btnShop">Заморозить</button>
+          <button class="btnShop" (click)="updateShop()">Обновить</button>
+        </div>
+        <div *ngFor="let card of player.shop.cardList" style="display: flex">
+          <app-card-shop  [card]="card"></app-card-shop>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="stataPlayer">
+      <p>здоровье:</p>
+      <p>уровень:</p>
+      <p>деньги:</p>
+    </div>
+  </div>
+</div>
+
+</body>

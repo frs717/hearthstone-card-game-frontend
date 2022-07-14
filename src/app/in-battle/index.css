@@ -1,17 +1,6 @@
 body{
-  background: -webkit-linear-gradient(90deg, #805590,#66549d,#3455aa);
-  background: linear-gradient(90deg, #805590,#66549d,#3455aa);
-  overflow-y: hidden;
-}
-
-body{
   margin: 0;
 
-}
-
-hr{
-  margin: 0;
-  border: 1px solid black;
 }
 
 *{
@@ -19,10 +8,12 @@ hr{
 }
 .wrapper{
   display: flex;
+
 }
 .playersDiv{
   margin: 0;
   padding:0;
+  background-color: red;
   height: 100vh;
   width: 250px;
   display: flex;
@@ -34,6 +25,7 @@ hr{
   margin-top: 50px;
   margin-bottom: 50px;
   padding: 20px;
+  background-color: #9d6cc0;
   height: 20px;
   width: 100%
 }
@@ -41,12 +33,12 @@ hr{
 p{
   margin: 0;
   font-size: 20px;
-  color: #ffffff;
 }
 
 .shop{
   width: 100%;
-  height: 200px;
+  height: 150px;
+  background-color: #9EEFE1;
 }
 
 .buttonsShop{
@@ -64,21 +56,21 @@ p{
   padding-right: 10px;
   position:absolute;
   bottom:0;
+  background-color: yellow;
+
+}
+.topStata{
+  height: 10%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: yellow;
 }
 
 .content{
   width: 100%;
   position:relative;
 }
-
-.btnShop{
-  margin: 5px;
-  border: none;
-  padding: 5px;
-  border-radius: 10px;
-}
-
-.btnShop:hover{
-  cursor: pointer;
-}
-
