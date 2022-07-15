@@ -1,0 +1,46 @@
+.wrapper{
+  width: auto;
+  height: auto;
+  position: absolute;
+  text-align: center;
+}
+
+.card{
+  background-color: #c21cae;
+  width: 100px;
+  height: 150px;
+  text-align: center;
+  position:relative;
+  margin-left: 10px;
+  border: 2px solid black;
+}
+
+.characteristics{
+  display: flex;
+  flex-direction: column;
+  position:absolute;
+  bottom:0;
+  padding: 10px;
+  text-align: left;
+
+}
+
+h1{
+  font-size: 14px;
+}
+.btn{
+  margin: 2px;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+
+}
+
+.btn:hover{
+  cursor: pointer;
+}
+
+
+
+
+
