@@ -27,16 +27,21 @@
       </div>
     </div>
     <hr>
-<div class="cardInv" style="width: 100%; height: 215px; display: flex; justify-content: space-evenly; margin-top: 10px">
+<div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
     <div *ngFor="let card of player.activeCards" style="display: flex; justify-content: space-evenly; ">
-      <app-card-inventory [cardI]="card"></app-card-inventory>
+      <app-card-in-battle  [cardA]="card"></app-card-in-battle>
     </div>
 </div>
+    <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
+      <div *ngFor="let card of player.invCards" style="display: flex; justify-content: space-evenly; ">
+        <app-card-inventory [cardI]="card"></app-card-inventory>
+      </div>
+    </div>
     <hr>
-    <div class="stataPlayer">
-      <p>здоровье:</p>
-      <p>уровень:</p>
-      <p>деньги:</p>
+    <div class="stataPlayer" style="margin-top: 10px">
+      <p>здоровье:{{player.hp}}</p>
+      <p>уровень:{{player.shop.lvl}}</p>
+      <p>деньги:{{player.gold}}</p>
     </div>
   </div>
 </div>

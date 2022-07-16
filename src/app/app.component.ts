@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
   stompClient!:any;
   w:boolean=false;
   player:any;
+  id:any;
 
   @Output() outputInfo= new EventEmitter<any>();
   players: any;
@@ -84,10 +85,14 @@ export class AppComponent implements OnInit {
     this.stompClient.subscribe('/user/queue/game/updateShop',this.onUpdateShop);
     this.activeForm='betweenFight';
     this.player = JSON.parse(payload.body);
+    this.stompClient.subscribe('/user/queue/game/round/start', this.onStartRound)
+  }
+
+  onStartRound=()=>{
+     this.activeForm = 'inBattle';
   }
 
   onUpdateShop=(payload:any) => {
-    // alert(payload)
     this.player = JSON.parse(payload.body);
   }
 
@@ -136,6 +141,7 @@ export class AppComponent implements OnInit {
   onMessageReceived = (payload: any) =>{
     let lobby = JSON.parse(payload.body);
     this.players = lobby.users;
+    this.id = lobby.id;
   }
 
   onConnectedError=() =>{
