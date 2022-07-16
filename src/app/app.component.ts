@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
   onCreated = () =>{
     this.stompClient.subscribe('/user/queue/errors', this.onError);
     this.stompClient.subscribe('/user/queue/create', this.successfulCreated);
-    this.stompClient.subscribe('/user/queue/game/start',this.onGameStarted);
+    this.stompClient.subscribe('/user/queue/game/shop',this.onGameStarted);
     this.stompClient.send("/app/lobby.create",
       {},
       JSON.stringify({username: this.username})
@@ -81,11 +81,16 @@ export class AppComponent implements OnInit {
     //connectingElement.classList.add('hidden');
   }
 
+  onReturnBetweenFight=()=>{
+    this.activeForm = 'betweenFight';
+  }
+
   onGameStarted=(payload:any)=>{
     this.stompClient.subscribe('/user/queue/game/updateShop',this.onUpdateShop);
     this.activeForm='betweenFight';
     this.player = JSON.parse(payload.body);
-    this.stompClient.subscribe('/user/queue/game/round/start', this.onStartRound)
+    this.stompClient.subscribe('/queue/game/shop', this.onStartRound);
+    this.stompClient.subscribe('/queue/game/shop',this.onReturnBetweenFight);
   }
 
   onStartRound=()=>{
@@ -131,7 +136,7 @@ export class AppComponent implements OnInit {
   onJoined = () => {
     this.stompClient.subscribe('/user/queue/errors', this.onError);
     this.stompClient.subscribe('/topic/public/' + this.info.idGame, this.onMessageReceived);
-    this.stompClient.subscribe('/user/queue/game/start',this.onGameStarted);
+    this.stompClient.subscribe('/user/queue/game/shop',this.onGameStarted);
     this.stompClient.send("/app/lobby.join",
       {},
       JSON.stringify({username: this.username, lobbyId: this.info.idGame})
