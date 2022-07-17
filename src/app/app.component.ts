@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
     console.log(info)
     this.lobby = false;
 
-    if(this.info.idGame || this.info.idGame===0){
+    if(this.info.idGame!=="none"){
       this.join()
     } else {
       this.create()
@@ -103,6 +103,7 @@ export class AppComponent implements OnInit {
 
   successfulCreated = (payload:any) =>{
   let lobby = JSON.parse(payload.body);
+  this.info.idGame = lobby.id;
   this.stompClient.subscribe('/topic/public/' + lobby.id, this.onMessageReceived);
   console.log('lobby: ' + payload.body);
   this.onMessageReceived(payload);
@@ -164,7 +165,7 @@ export class AppComponent implements OnInit {
   }
 
   updateShop() {
-    this.stompClient.send("/app/game/updateShop",
+    this.stompClient.send("/app/game.updateShop",
       {},
       JSON.stringify({username: this.username, lobbyId: this.info.idGame})
     )

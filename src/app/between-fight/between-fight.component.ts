@@ -33,4 +33,19 @@ export class BetweenFightComponent implements OnInit {
       index
     )
   }
+
+  changeFreezeStatus() {
+    this.stompClient.send("/app/game.changeFreezeShop",
+      {},
+    )
+  }
+
+
+  sellInvCard(card: any) {
+    let index = this.player.invCards.indexOf(card);
+    this.stompClient.send("/game.sellInventoryCard",
+      {},
+      index
+    )
+  }
 }

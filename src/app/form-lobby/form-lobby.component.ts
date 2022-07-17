@@ -51,7 +51,7 @@ export class FormLobbyComponent implements OnInit {
   }
 
   create() {
-    let info = new Info(this.form.value.idGame, this.form.value.name);
+    let info = new Info("none", this.form.value.name);
     this.isClickBtn.emit(info);
     this.onFormChanged.emit("info")
     // AppComp.setForm(this);

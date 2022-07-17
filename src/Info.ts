@@ -1,7 +1,7 @@
 export class Info {
-  idGame!:number;
+  idGame!:any;
   name!:string;
-  constructor(idGame:number, name:string) {
+  constructor(idGame:any, name:string) {
     this.name=name;
     this.idGame = idGame;
   }

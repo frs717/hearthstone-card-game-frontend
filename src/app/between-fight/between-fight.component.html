@@ -15,7 +15,7 @@
           <button class="btnShop">Улучшить</button>
         </div>
         <div class="rightBtnShop">
-          <button class="btnShop">Заморозить</button>
+          <button class="btnShop" (click)="changeFreezeStatus()">{{player.shop.freezeStatus?'Разморозить':'Заморозить'}}</button>
           <button class="btnShop" (click)="updateShop()">Обновить</button>
         </div>
 
@@ -34,7 +34,7 @@
 </div>
     <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
       <div *ngFor="let card of player.invCards" style="display: flex; justify-content: space-evenly; ">
-        <app-card-inventory [cardI]="card"></app-card-inventory>
+        <app-card-inventory [cardI]="card"  (onSellInvCard)="sellInvCard($event)"></app-card-inventory>
       </div>
     </div>
     <hr>
