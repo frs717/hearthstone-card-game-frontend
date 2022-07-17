@@ -6,22 +6,24 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./between-fight.component.scss']
 })
 export class BetweenFightComponent implements OnInit {
-  @Output() onFormChange= new EventEmitter<any>();
-  @Output() onUpdateShop= new EventEmitter<any>();
+  @Output() onFormChange = new EventEmitter<any>();
+  @Output() onUpdateShop = new EventEmitter<any>();
   @Input()
-  player:any;
+  player: any;
   @Input()
-  stompClient!:any;
-  constructor() { }
+  stompClient!: any;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
 
- //  startGame(){
- //    // this.isClickBtn.emit()
- // //   this.onFormChange.emit("betweenGame")
- //    this.onStart.emit()
- //  }
+  //  startGame(){
+  //    // this.isClickBtn.emit()
+  // //   this.onFormChange.emit("betweenGame")
+  //    this.onStart.emit()
+  //  }
   updateShop(): void {
     this.onUpdateShop.emit();
   }
@@ -49,7 +51,7 @@ export class BetweenFightComponent implements OnInit {
     )
   }
 
-  sellActiveCard(card:any){
+  sellActiveCard(card: any) {
     let index = this.player.activeCards.indexOf(card);
     this.stompClient.send("/app/game.sellActiveCard",
       {},
@@ -57,7 +59,7 @@ export class BetweenFightComponent implements OnInit {
     )
   }
 
-  putInvCard(card:any){
+  putInvCard(card: any) {
     let index = this.player.invCards.indexOf(card);
     this.stompClient.send("/app/game.putCardToTable",
       {},
@@ -71,9 +73,11 @@ export class BetweenFightComponent implements OnInit {
     )
   }
 
-  moveCardLeft(){
+  moveCardLeft(card:any) {
+    let index = this.player.activeCards.indexOf(card);
     this.stompClient.send("/app/game.moveCardLeft",
-      {}
+      {},
+      index
     )
   }
 }
