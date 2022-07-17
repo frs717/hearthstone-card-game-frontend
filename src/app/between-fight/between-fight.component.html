@@ -12,11 +12,11 @@
     <div class="shop">
       <div class="buttonsShop">
         <div class="btnImprove">
-          <button class="btnShop" (click)="upgradeShop()">Улучшить</button>
+          <button class="btnShop" (click)="upgradeShop()">Улучшить ({{player.shop.upgradePrice}})</button>
         </div>
         <div class="rightBtnShop">
           <button class="btnShop" (click)="changeFreezeStatus()">{{player.shop.freezeStatus?'Разморозить':'Заморозить'}}</button>
-          <button class="btnShop" (click)="updateShop()">Обновить</button>
+          <button class="btnShop" (click)="updateShop()">Обновить(1)</button>
         </div>
 
         </div>
@@ -29,7 +29,7 @@
     <hr>
 <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
     <div *ngFor="let card of player.activeCards" style="display: flex; justify-content: space-evenly; ">
-      <app-card-in-battle (onSellActiveCard)="sellActiveCard($event)" (onMoveLeftCard)="moveCardLeft($event)" [cardA]="card"> </app-card-in-battle>
+      <app-card-in-battle (onSellActiveCard)="sellActiveCard($event)" (onMoveLeftCard)="moveCardLeft($event)" (onMoveRightCard)="moveCardRight($event)" [cardA]="card"> </app-card-in-battle>
     </div>
 </div>
     <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">

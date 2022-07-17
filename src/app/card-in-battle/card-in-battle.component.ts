@@ -10,6 +10,7 @@ export class CardInBattleComponent implements OnInit {
   cardA:any;
   @Output() onSellActiveCard= new EventEmitter<any>();
   @Output() onMoveLeftCard= new EventEmitter<any>();
+  @Output() onMoveRightCard= new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -21,5 +22,9 @@ export class CardInBattleComponent implements OnInit {
 
   moveCardLeft() {
     this.onMoveLeftCard.emit(this.cardA);
+  }
+
+  moveCardRight(){
+    this.onMoveRightCard.emit(this.cardA);
   }
 }

@@ -80,4 +80,12 @@ export class BetweenFightComponent implements OnInit {
       index
     )
   }
+
+  moveCardRight(card:any) {
+    let index = this.player.activeCards.indexOf(card);
+    this.stompClient.send("/app/game.moveCardRight",
+      {},
+      index
+    )
+  }
 }
