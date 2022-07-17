@@ -10,6 +10,8 @@ export class BetweenFightComponent implements OnInit {
   @Output() onUpdateShop= new EventEmitter<any>();
   @Input()
   player:any;
+  @Input()
+  stompClient!:any;
   constructor() { }
 
   ngOnInit(): void {
@@ -22,5 +24,13 @@ export class BetweenFightComponent implements OnInit {
  //  }
   updateShop(): void {
     this.onUpdateShop.emit();
+  }
+
+  buyCard(card: any) {
+    let index = this.player.shop.cardList.indexOf(card);
+    this.stompClient.send("/app/game.buyCard",
+      {},
+      index
+    )
   }
 }
