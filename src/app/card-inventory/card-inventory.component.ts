@@ -9,6 +9,7 @@ export class CardInventoryComponent implements OnInit {
   @Input()
   cardI:any;
   @Output() onSellInvCard= new EventEmitter<any>();
+  @Output() onPutInvCard= new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
@@ -16,5 +17,9 @@ export class CardInventoryComponent implements OnInit {
 
   sellCard() {
     this.onSellInvCard.emit(this.cardI);
+  }
+
+  putCardInv() {
+    this.onPutInvCard.emit(this.cardI);
   }
 }

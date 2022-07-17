@@ -43,9 +43,37 @@ export class BetweenFightComponent implements OnInit {
 
   sellInvCard(card: any) {
     let index = this.player.invCards.indexOf(card);
-    this.stompClient.send("/game.sellInventoryCard",
+    this.stompClient.send("/app/game.sellInventoryCard",
       {},
       index
+    )
+  }
+
+  sellActiveCard(card:any){
+    let index = this.player.activeCards.indexOf(card);
+    this.stompClient.send("/app/game.sellActiveCard",
+      {},
+      index
+    )
+  }
+
+  putInvCard(card:any){
+    let index = this.player.invCards.indexOf(card);
+    this.stompClient.send("/app/game.putCardToTable",
+      {},
+      index
+    )
+  }
+
+  upgradeShop() {
+    this.stompClient.send("/app/game.upgradeShop",
+      {}
+    )
+  }
+
+  moveCardLeft(){
+    this.stompClient.send("/app/game.moveCardLeft",
+      {}
     )
   }
 }

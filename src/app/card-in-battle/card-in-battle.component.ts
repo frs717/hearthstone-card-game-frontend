@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-card-in-battle',
@@ -8,9 +8,18 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CardInBattleComponent implements OnInit {
   @Input()
   cardA:any;
+  @Output() onSellActiveCard= new EventEmitter<any>();
+  @Output() onMoveLeftCard= new EventEmitter<any>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  sellActiveCard() {
+    this.onSellActiveCard.emit(this.cardA);
+  }
+
+  moveCardLeft() {
+    this.onMoveLeftCard.emit(this.cardA);
+  }
 }

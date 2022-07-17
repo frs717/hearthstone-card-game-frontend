@@ -12,7 +12,7 @@
     <div class="shop">
       <div class="buttonsShop">
         <div class="btnImprove">
-          <button class="btnShop">Улучшить</button>
+          <button class="btnShop" (click)="upgradeShop()">Улучшить</button>
         </div>
         <div class="rightBtnShop">
           <button class="btnShop" (click)="changeFreezeStatus()">{{player.shop.freezeStatus?'Разморозить':'Заморозить'}}</button>
@@ -29,18 +29,18 @@
     <hr>
 <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
     <div *ngFor="let card of player.activeCards" style="display: flex; justify-content: space-evenly; ">
-      <app-card-in-battle  [cardA]="card"></app-card-in-battle>
+      <app-card-in-battle (onSellActiveCard)="sellActiveCard($event)" (onMoveLeftCard)="moveCardLeft()" [cardA]="card"> </app-card-in-battle>
     </div>
 </div>
     <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
       <div *ngFor="let card of player.invCards" style="display: flex; justify-content: space-evenly; ">
-        <app-card-inventory [cardI]="card"  (onSellInvCard)="sellInvCard($event)"></app-card-inventory>
+        <app-card-inventory [cardI]="card"  (onSellInvCard)="sellInvCard($event)" (onPutInvCard)="putInvCard($event)"></app-card-inventory>
       </div>
     </div>
     <hr>
     <div class="stataPlayer" style="margin-top: 10px">
       <p>здоровье:{{player.hp}}</p>
-      <p>уровень:{{player.shop.lvl}}</p>
+      <p>уровень:{{player.shop.level}}</p>
       <p>деньги:{{player.gold}}</p>
     </div>
   </div>
