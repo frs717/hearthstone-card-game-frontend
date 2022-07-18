@@ -81,8 +81,9 @@ export class AppComponent implements OnInit {
     //connectingElement.classList.add('hidden');
   }
 
-  onReturnBetweenFight=()=>{
+  onReturnBetweenFight=(payload:any)=>{
     this.activeForm = 'betweenFight';
+    this.onUpdateShop(payload);
   }
 
   onGameStarted=(payload:any)=>{
@@ -91,10 +92,15 @@ export class AppComponent implements OnInit {
     this.player = JSON.parse(payload.body);
     this.stompClient.subscribe('/user/queue/game/round/start', this.onStartRound);
     this.stompClient.subscribe('/user/queue/game/shop/start',this.onReturnBetweenFight);
+    this.stompClient.subscribe('/user/queue/game/round/update', this.onRoundUpdate);
   }
 
   onStartRound=()=>{
      this.activeForm = 'inBattle';
+  }
+
+  onRoundUpdate=()=>{
+    alert('kkkk');
   }
 
   onUpdateShop=(payload:any) => {
