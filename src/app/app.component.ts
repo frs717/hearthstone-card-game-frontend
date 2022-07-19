@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
 
   @Output() outputInfo= new EventEmitter<any>();
   players: any;
+  round: any;
   ngOnInit() {
 
   }
@@ -95,12 +96,13 @@ export class AppComponent implements OnInit {
     this.stompClient.subscribe('/user/queue/game/round/update', this.onRoundUpdate);
   }
 
-  onStartRound=()=>{
+  onStartRound=(payload:any)=>{
+    this.round = JSON.parse(payload.body);
      this.activeForm = 'inBattle';
   }
 
-  onRoundUpdate=()=>{
-    alert('kkkk');
+  onRoundUpdate=(payload:any)=>{
+    this.round = JSON.parse(payload.body);
   }
 
   onUpdateShop=(payload:any) => {

@@ -1,1 +1,27 @@
-<p>in-battle works!</p>
+
+<body>
+<div class="wrapper">
+  <div class="playersDiv">
+    <div class="players">
+      <p class="player">Первый игрок-(хп)</p>
+      <p class="player">Второй игрок-</p>
+      <p class="player">3 игрок-</p>
+      <p class="player">4 игрок-</p>
+    </div>
+  </div>
+  <div class="content" style="display: flex">
+    <div *ngFor="let card of round.opponentCard" style="display: flex; ">
+      <app-card-in-battle [card]="card"></app-card-in-battle>
+    </div>
+
+    <div class="stataPlayer">
+      <p>здоровье:</p>
+      <p>уровень:</p>
+      <p>деньги:</p>
+    </div>
+    <div *ngFor="let card of round.playerCard" style="display: flex; ">
+      <app-card-in-battle [card]="card"></app-card-in-battle>
+    </div>
+  </div>
+</div>
+

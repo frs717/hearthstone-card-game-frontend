@@ -29,7 +29,7 @@
     <hr>
 <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">
     <div *ngFor="let card of player.activeCards" style="display: flex; justify-content: space-evenly; ">
-      <app-card-in-battle (onSellActiveCard)="sellActiveCard($event)" (onMoveLeftCard)="moveCardLeft($event)" (onMoveRightCard)="moveCardRight($event)" [cardA]="card"> </app-card-in-battle>
+      <app-card-in-battle (onSellActiveCard)="sellActiveCard($event)" (onMoveLeftCard)="moveCardLeft($event)" (onMoveRightCard)="moveCardRight($event)" [card]="card"> </app-card-in-battle>
     </div>
 </div>
     <div class="cardInv" style="width: 100%; height: 220px; display: flex; justify-content: space-evenly; margin-top: 10px">

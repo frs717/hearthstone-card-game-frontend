@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-in-battle',
@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InBattleComponent implements OnInit {
 
+  @Input()
+  round:any = {
+    playerCard: [],
+    opponentCard: []
+  };
   constructor() { }
 
   ngOnInit(): void {

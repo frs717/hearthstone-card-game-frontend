@@ -7,7 +7,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class CardInBattleComponent implements OnInit {
   @Input()
-  cardA:any;
+  card:any;
   @Output() onSellActiveCard= new EventEmitter<any>();
   @Output() onMoveLeftCard= new EventEmitter<any>();
   @Output() onMoveRightCard= new EventEmitter<any>();
@@ -17,14 +17,14 @@ export class CardInBattleComponent implements OnInit {
   }
 
   sellActiveCard() {
-    this.onSellActiveCard.emit(this.cardA);
+    this.onSellActiveCard.emit(this.card);
   }
 
   moveCardLeft() {
-    this.onMoveLeftCard.emit(this.cardA);
+    this.onMoveLeftCard.emit(this.card);
   }
 
   moveCardRight(){
-    this.onMoveRightCard.emit(this.cardA);
+    this.onMoveRightCard.emit(this.card);
   }
 }
