@@ -14,7 +14,7 @@
     <div *ngFor="let card of round.opponentCard"
          style="display: flex; ">
       <app-card-on-the-field [card]="card" [attackCard]="!round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
-                             [defenceCard]="round.playerAttack && round.opponentCard.indexOf(card)==round.defenceCardIndex"
+                             [defenceCard]="round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
 
       ></app-card-on-the-field>
     </div>
