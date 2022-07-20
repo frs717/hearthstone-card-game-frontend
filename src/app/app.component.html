@@ -1,5 +1,5 @@
 <body>
-<app-img-heartstone *ngIf="activeForm!=='betweenFight'"></app-img-heartstone>
+<app-img-heartstone *ngIf="activeForm!=='betweenFight' && activeForm!=='inBattle'"></app-img-heartstone>
 <app-form-lobby *ngIf="activeForm=='lobby'" (isClickBtn) ="onChanged($event)" (onFormChanged) ="formChanged($event)"></app-form-lobby>
 <app-form-info *ngIf="activeForm=='info'" [players]="players"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
 <!--<img class="img-person" src="assets/person.png" alt="">-->

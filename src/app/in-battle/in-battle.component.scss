@@ -1,0 +1,89 @@
+body{
+  background: -webkit-linear-gradient(90deg, #805590,#66549d,#3455aa);
+  background: linear-gradient(90deg, #805590,#66549d,#3455aa);
+  overflow-y: hidden;
+}
+
+body{
+  margin: 0;
+
+}
+
+hr{
+  margin: 0;
+  border: 1px solid black;
+}
+
+*{
+  box-sizing: border-box;
+}
+.wrapper{
+  display: flex;
+}
+.playersDiv{
+  margin: 0;
+  padding:0;
+  height: 100vh;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+}
+
+.player{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+  height: 20px;
+  width: 100%
+}
+
+.BottomDiv{
+  margin-top: 400px;
+}
+
+p{
+  margin: 0;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.shop{
+  width: 100%;
+  height: 220px;
+}
+
+.buttonsShop{
+  display: flex;
+  justify-content: space-between;
+}
+
+.stataPlayer{
+  height: 10%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  position:absolute;
+  bottom:0;
+}
+
+.content{
+  width: 100%;
+  position:relative;
+}
+
+.btnShop{
+  margin: 5px;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.btnShop:hover{
+  cursor: pointer;
+}
+
+

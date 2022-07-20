@@ -9,19 +9,31 @@
       <p class="player">4 игрок-</p>
     </div>
   </div>
-  <div class="content" style="display: flex">
-    <div *ngFor="let card of round.opponentCard" style="display: flex; ">
-      <app-card-in-battle [card]="card"></app-card-in-battle>
+  <div class="content">
+    <div class="topDiv" style="display:flex; justify-content: space-evenly">
+    <div *ngFor="let card of round.opponentCard"
+         style="display: flex; ">
+      <app-card-on-the-field [card]="card"
+                          [attackCard]="!round.isPlayerAttack && round.opponentCard.indexOf(card)==round.attackCardIndex"
+                          [defenceCard]="round.isPlayerAttack && round.opponentCard.indexOf(card)==round.defenceCardIndex"
+      ></app-card-on-the-field>
+    </div>
+    </div>
+    <div class="BottomDiv" style="display: flex; justify-content: space-evenly">
+    <div *ngFor="let card of round.playerCard"
+         style="display: flex; ">
+      <app-card-on-the-field [card]="card"
+                             [attackCard]="round.isPlayerAttack && round.playerCard.indexOf(card)==round.attackCardIndex"
+                             [defenceCard]="!round.isPlayerAttack && round.playerCard.indexOf(card)==round.defenceCardIndex"
+      ></app-card-on-the-field>
+    </div>
     </div>
 
     <div class="stataPlayer">
       <p>здоровье:</p>
       <p>уровень:</p>
-      <p>деньги:</p>
     </div>
-    <div *ngFor="let card of round.playerCard" style="display: flex; ">
-      <app-card-in-battle [card]="card"></app-card-in-battle>
-    </div>
+
   </div>
 </div>
 

@@ -1,0 +1,46 @@
+.wrapper{
+  width: auto;
+  height: auto;
+  position: absolute;
+  text-align: center;
+}
+
+.card{
+  background-color: #c21cae;
+  width: 100px;
+  height: 150px;
+  text-align: center;
+  position:relative;
+  padding: 0;
+  margin: 0;
+
+
+}
+
+.characteristics{
+  display: flex;
+  flex-direction: column;
+  position:absolute;
+  bottom:0;
+  padding: 10px;
+  text-align: left;
+
+}
+
+h1{
+  font-size: 14px;
+}
+
+.attackCard{
+
+  transition: 0.7s;
+  border-style: inset;
+  border-color: red;
+}
+.defenceCard{
+  border: 3px solid blue;
+  transition: 0.7s;
+}
+
+
+

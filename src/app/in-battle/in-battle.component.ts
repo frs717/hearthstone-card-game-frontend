@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-in-battle',
@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./in-battle.component.scss']
 })
 export class InBattleComponent implements OnInit {
-
+  @Output() onFormChange = new EventEmitter<any>();
   @Input()
   round:any = {
     playerCard: [],

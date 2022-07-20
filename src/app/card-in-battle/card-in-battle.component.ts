@@ -8,6 +8,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class CardInBattleComponent implements OnInit {
   @Input()
   card:any;
+  @Input()
+  attackCard:any;
+  @Input()
+  defenceCard:any;
   @Output() onSellActiveCard= new EventEmitter<any>();
   @Output() onMoveLeftCard= new EventEmitter<any>();
   @Output() onMoveRightCard= new EventEmitter<any>();

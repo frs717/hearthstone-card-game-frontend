@@ -3,6 +3,8 @@
   height: auto;
   position: absolute;
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 .card{
@@ -41,3 +43,11 @@ button:hover{
 
 
 
+.attackCard{
+  border: 3px solid red;
+  transition: 0.7s;
+}
+.defenceCard{
+  border: 3px solid blue;
+  transition: 0.7s;
+}
