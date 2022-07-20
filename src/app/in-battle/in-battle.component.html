@@ -13,9 +13,8 @@
     <div class="topDiv" style="display:flex; justify-content: space-evenly">
     <div *ngFor="let card of round.opponentCard"
          style="display: flex; ">
-      <app-card-on-the-field [card]="card"
-                          [attackCard]="!round.isPlayerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
-                             [defenceCard]="round.isPlayerAttack && round.opponentCard.indexOf(card)==round.defenceCardIndex"
+      <app-card-on-the-field [card]="card" [attackCard]="!round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
+                             [defenceCard]="round.playerAttack && round.opponentCard.indexOf(card)==round.defenceCardIndex"
 
       ></app-card-on-the-field>
     </div>
@@ -24,8 +23,8 @@
     <div *ngFor="let card of round.playerCard"
          style="display: flex; ">
       <app-card-on-the-field [card]="card"
-                             [attackCard]="round.isPlayerAttack && round.playerCard.indexOf(card)==round.playerCardIndex"
-                             [defenceCard]="!round.isPlayerAttack && round.playerCard.indexOf(card)==round.playerCardIndex"
+                             [attackCard]="round.playerAttack && round.playerCard.indexOf(card)==round.playerCardIndex"
+                             [defenceCard]="!round.playerAttack && round.playerCard.indexOf(card)==round.playerCardIndex"
       ></app-card-on-the-field>
     </div>
     </div>
