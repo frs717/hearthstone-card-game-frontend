@@ -3,7 +3,7 @@
 <app-form-lobby *ngIf="activeForm=='lobby'" (isClickBtn) ="onChanged($event)" (onFormChanged) ="formChanged($event)"></app-form-lobby>
 <app-form-info *ngIf="activeForm=='info'" [players]="players"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
 <!--<img class="img-person" src="assets/person.png" alt="">-->
-<app-between-fight *ngIf="activeForm=='betweenFight'" [player]="player" [stompClient]="stompClient" (onUpdateShop)="updateShop()"></app-between-fight>
+<app-between-fight *ngIf="activeForm=='betweenFight'" [player]="player" [players]="players" [stompClient]="stompClient" (onUpdateShop)="updateShop()"></app-between-fight>
 <!--<img class="logo-card" src="assets/card-main.png" alt="">-->
 <app-in-battle *ngIf="activeForm=='inBattle'" [round]="round"></app-in-battle>
 </body>

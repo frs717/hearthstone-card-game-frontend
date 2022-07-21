@@ -2,7 +2,9 @@
 <div class="wrapper">
   <div class="playersDiv">
     <div class="players">
-      <p class="player">Первый игрок-(хп) - </p>
+      <p class="player" *ngFor="let player of players">
+        {{player.username}} - {{player.hp}}
+      </p>
     </div>
   </div>
   <div class="content">

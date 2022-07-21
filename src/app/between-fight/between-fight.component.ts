@@ -11,6 +11,8 @@ export class BetweenFightComponent implements OnInit {
   @Input()
   player: any;
   @Input()
+  players: any;
+  @Input()
   stompClient!: any;
 
   constructor() {

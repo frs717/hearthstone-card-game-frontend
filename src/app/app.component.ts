@@ -91,6 +91,7 @@ export class AppComponent implements OnInit {
     this.stompClient.subscribe('/user/queue/game/shop/update',this.onUpdateShop);// сюда покупку карты и тд. обновится карта и эта штукас срабоатет
     this.activeForm='betweenFight';
     this.player = JSON.parse(payload.body).player;
+    this.players = JSON.parse(payload.body).players;
     this.stompClient.subscribe('/user/queue/game/round/start', this.onStartRound);
     this.stompClient.subscribe('/user/queue/game/shop/start',this.onReturnBetweenFight);
     this.stompClient.subscribe('/user/queue/game/round/update', this.onRoundUpdate);
