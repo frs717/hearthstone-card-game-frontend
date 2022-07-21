@@ -6,12 +6,14 @@
 }
 
 .card{
-  background-color: #c21cae;
+  background: rgb(124,133,88);
+  background: radial-gradient(circle, rgba(124,133,88,1) 1%, rgba(68,74,48,1) 53%, rgba(45,50,43,1) 100%);
   width: 100px;
   height: 150px;
   text-align: center;
   position:relative;
   border: 2px solid black;
+ // background-image: url("/src/assets/c.png");
 }
 
 .characteristics{

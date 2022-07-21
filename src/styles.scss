@@ -1,6 +1,14 @@
 body{
-  background: -webkit-linear-gradient(90deg, #805590,#66549d,#3455aa);
-  background: linear-gradient(90deg, #805590,#66549d,#3455aa);
+  //background: -webkit-linear-gradient(90deg, #805590,#66549d,#3455aa);
+  //background: linear-gradient(90deg, #805590,#66549d,#3455aa);
+  background-image: url("assets/bk.png");
+  background-size: cover;
+
   overflow-y: hidden;
   margin: 0;
+}
+
+.card{
+  background: rgb(124,133,88);
+  background: radial-gradient(circle, rgba(124,133,88,1) 1%, rgba(68,74,48,1) 53%, rgba(45,50,43,1) 100%);
 }

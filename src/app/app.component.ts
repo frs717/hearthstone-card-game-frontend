@@ -90,12 +90,21 @@ export class AppComponent implements OnInit {
   onGameStarted=(payload:any)=>{
     this.stompClient.subscribe('/user/queue/game/shop/update',this.onUpdateShop);// сюда покупку карты и тд. обновится карта и эта штукас срабоатет
     this.activeForm='betweenFight';
-    this.player = JSON.parse(payload.body);
+    this.player = JSON.parse(payload.body).player;
     this.stompClient.subscribe('/user/queue/game/round/start', this.onStartRound);
     this.stompClient.subscribe('/user/queue/game/shop/start',this.onReturnBetweenFight);
     this.stompClient.subscribe('/user/queue/game/round/update', this.onRoundUpdate);
+    this.stompClient.subscribe('/user/queue/game/end', this.onGameOver);
   }
 
+  onGameOver=(payload:any)=>{
+    if (JSON.parse(payload.body).winner){
+      alert("WIN")
+    }else {
+      alert("LOOSE")
+    }
+    this.stompClient.disconnect();
+  }
   onStartRound=(payload:any)=>{
     this.round = JSON.parse(payload.body);
      this.activeForm = 'inBattle';
@@ -106,7 +115,7 @@ export class AppComponent implements OnInit {
   }
 
   onUpdateShop=(payload:any) => {
-    this.player = JSON.parse(payload.body);
+    this.player = JSON.parse(payload.body).player;
   }
 
   successfulCreated = (payload:any) =>{
