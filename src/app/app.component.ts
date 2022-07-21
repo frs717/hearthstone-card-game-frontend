@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
 
   @Output() outputInfo= new EventEmitter<any>();
   players: any;
+  opponent:any;
   round: any;
   ngOnInit() {
 
