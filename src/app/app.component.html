@@ -6,6 +6,7 @@
 <app-between-fight *ngIf="activeForm=='betweenFight'" [player]="player" [players]="players"  [stompClient]="stompClient" (onUpdateShop)="updateShop()"></app-between-fight>
 <!--<img class="logo-card" src="assets/card-main.png" alt="">-->
 <app-in-battle *ngIf="activeForm=='inBattle'" [round]="round"></app-in-battle>
+<app-form-finished *ngIf="activeForm=='formFinished'" [isWin]="isWin" (isClickLobbi)="inLobbi()"></app-form-finished>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>

@@ -37,7 +37,7 @@ import * as Stomp from "stompjs";
 })
 
 export class AppComponent implements OnInit {
-
+  isWin!:boolean;
   title = 'AngCardGame';
   lobby = true;
   info!: Info;
@@ -84,6 +84,7 @@ export class AppComponent implements OnInit {
   }
 
   onReturnBetweenFight=(payload:any)=>{
+    this.players = JSON.parse(payload.body).players;
     this.activeForm = 'betweenFight';
     this.onUpdateShop(payload);
   }
@@ -100,15 +101,15 @@ export class AppComponent implements OnInit {
   }
 
   onGameOver=(payload:any)=>{
-    if (JSON.parse(payload.body).winner){
-      alert("WIN")
-    }else {
-      alert("LOOSE")
-    }
+this.activeForm = 'formFinished';
+    console.log(JSON.parse(payload.body).winner);
+this.isWin = JSON.parse(payload.body).winner;
     this.stompClient.disconnect();
   }
   onStartRound=(payload:any)=>{
-    this.round = JSON.parse(payload.body);
+     this.round = JSON.parse(payload.body);
+     // this.players = JSON.parse(payload.body).players;
+
      this.activeForm = 'inBattle';
   }
 
@@ -181,6 +182,9 @@ export class AppComponent implements OnInit {
   leave=() =>{
     this.stompClient.disconnect();
     this.stompClient = null;
+  }
+  inLobbi(){
+    this.activeForm = 'lobby';
   }
 
   updateShop() {

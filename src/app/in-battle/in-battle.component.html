@@ -1,21 +1,23 @@
 
 <body>
 <div class="wrapper">
-  <div class="playersDiv">
-    <div class="players">
-
-    </div>
-  </div>
   <div class="content">
+    <div class="stataOp">
+      <p class="oponent">Противник:{{round.opponent.username}}</p>
+      <p>здоровье:{{round.opponent.hp}}</p>
+      <p>уровень: {{round.opponent.shop.level}}</p>
+    </div>
     <div class="topDiv" style="display:flex; justify-content: space-evenly">
     <div *ngFor="let card of round.opponentCard"
          style="display: flex; ">
       <app-card-on-the-field [card]="card" [attackCard]="!round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
                              [defenceCard]="round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
-
       ></app-card-on-the-field>
+
     </div>
+
     </div>
+
     <div class="BottomDiv" style="display: flex; justify-content: space-evenly">
     <div *ngFor="let card of round.playerCard"
          style="display: flex; ">
@@ -24,11 +26,13 @@
                              [defenceCard]="!round.playerAttack && round.playerCard.indexOf(card)==round.playerCardIndex"
       ></app-card-on-the-field>
     </div>
-    </div>
 
+    </div>
+    <hr class="middle">
     <div class="stataPlayer">
-      <p>здоровье:</p>
-      <p>уровень:</p>
+<!--      <p>вы:</p>-->
+      <p>здоровье:{{round.player.hp}}</p>
+      <p>уровень:{{round.player.shop.level}}</p>
     </div>
 
   </div>

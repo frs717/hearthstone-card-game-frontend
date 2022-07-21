@@ -9,6 +9,11 @@ body{
 
 }
 
+.oponent{
+  color: white;
+  font-size: 20px;
+}
+
 hr{
   margin: 0;
   border: 1px solid black;
@@ -70,9 +75,19 @@ p{
   bottom:0;
 }
 
+.stataOp{
+  height: 10%;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .content{
   width: 100%;
-  position:relative;
+ // position:relative;
 }
 
 .btnShop{
@@ -86,4 +101,9 @@ p{
   cursor: pointer;
 }
 
+.hr{
+  display: flex;
+  justify-content: center;
+  size: 5px;
+}
 
