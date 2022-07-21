@@ -1,0 +1,87 @@
+*{
+  box-sizing: border-box;
+}
+form{
+  border-radius: 10px;
+  margin: 40px auto;
+  background-color: rgba(255, 255, 255, 0.44);
+  width: 20%;
+  text-align: center;
+  padding: 10px;
+  -webkit-box-shadow: 3px 5px 53px 6px rgba(34, 60, 80, 0.31) inset;
+  -moz-box-shadow: 3px 5px 53px 6px rgba(34, 60, 80, 0.31) inset;
+  box-shadow: 3px 5px 53px 6px rgba(34, 60, 80, 0.31) inset;
+}
+
+.formBtn {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  border: 0;
+  justify-content: center;
+  color: white;
+  padding: 10px;
+  margin: 8px 5px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  background-image: linear-gradient(to right, #9EEFE1 0%, #4830F0 51%, #9EEFE1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+  transition: .5s;
+}
+.formBtn:hover {
+  background-position: right center;
+  cursor: pointer;
+}
+
+input{
+  border: 0;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  width: 80%;
+}
+
+input:focus{
+  box-shadow: 2px 2px 2px 0 #9d6cc0;
+}
+
+.p-btn{
+  padding: 0;
+  margin: 0;
+}
+
+.createGame{
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.createGame{
+  cursor: pointer;
+}
+
+.form-create{
+  display: flex;
+  width: 25%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btnCreate{
+  padding: 10px
+}
+
+.fInpName{
+  height: 5%;
+}
+
+.buttons{
+  display: flex;
+  justify-content: center;
+}
+
+.formBtn:disabled{
+  cursor: default;
+  background-image: none;
+
+}
