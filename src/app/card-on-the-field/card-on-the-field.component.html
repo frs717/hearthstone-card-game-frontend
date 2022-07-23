@@ -1,5 +1,5 @@
 <div class="wrapper" >
-  <div class="card" [ngStyle]="{'background-image':'url(assets/'+card.name+'.png)'}">
+  <div class="card" [ngStyle]="{'background-image':'url(assets/'+card.name+'.png)'}" [class.attackCard]="attackCard" [class.defenceCard]="defenceCard">
 <!--    <h1>{{card.name}}</h1>-->
     <div class="characteristics">
     <div class="hp">{{card.hp}}</div>
