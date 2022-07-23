@@ -14,6 +14,8 @@ import { CardOnTheFieldComponent } from './card-on-the-field/card-on-the-field.c
 import { CardInBattleComponent } from './card-in-battle/card-in-battle.component';
 import { ImgHeartstoneComponent } from './img-heartstone/img-heartstone.component';
 import { FormFinishedComponent } from './form-finished/form-finished.component';
+import { ImgPersonComponent } from './img-person/img-person.component';
+import { ImgCardComponent } from './img-card/img-card.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FormFinishedComponent } from './form-finished/form-finished.component';
     CardInBattleComponent,
     ImgHeartstoneComponent,
     FormFinishedComponent,
+    ImgPersonComponent,
+    ImgCardComponent,
   ],
   imports: [
     BrowserModule,

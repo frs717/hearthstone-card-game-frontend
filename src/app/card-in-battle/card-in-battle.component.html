@@ -1,9 +1,9 @@
 <div class="wrapper" [class.attackCard]="attackCard" [class.defenceCard]="defenceCard">
-  <div class="card">
-    <h1>{{card.name}}</h1>
+  <div class="card" [ngStyle]="{'background-image':'url(assets/'+card.name+'.png)'}">
+<!--    <h1>{{card.name}}</h1>-->
     <div class="characteristics">
-      <div class="hp">хп:{{card.hp}}</div>
-      <div class="fight">урон:{{card.damage}}</div>
+      <div class="hp">{{card.hp}}</div>
+      <div class="fight">{{card.damage}}</div>
     </div>
   </div>
   <div class="div">

@@ -2,9 +2,10 @@
 <app-img-heartstone *ngIf="activeForm!=='betweenFight' && activeForm!=='inBattle'"></app-img-heartstone>
 <app-form-lobby *ngIf="activeForm=='lobby'" (isClickBtn) ="onChanged($event)" (onFormChanged) ="formChanged($event)"></app-form-lobby>
 <app-form-info *ngIf="activeForm=='info'" [players]="players"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
-<!--<img class="img-person" src="assets/person.png" alt="">-->
+<app-img-person *ngIf="activeForm!=='betweenFight' && activeForm!=='inBattle'"></app-img-person>
 <app-between-fight *ngIf="activeForm=='betweenFight'" [player]="player" [players]="players"  [stompClient]="stompClient" (onUpdateShop)="updateShop()"></app-between-fight>
 <!--<img class="logo-card" src="assets/card-main.png" alt="">-->
+<app-img-card *ngIf="activeForm!=='betweenFight' && activeForm!=='inBattle'"></app-img-card>
 <app-in-battle *ngIf="activeForm=='inBattle'" [round]="round"></app-in-battle>
 <app-form-finished *ngIf="activeForm=='formFinished'" [isWin]="isWin" (isClickLobbi)="inLobbi()"></app-form-finished>
 </body>

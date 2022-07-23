@@ -1,11 +1,11 @@
 body{
   //background: -webkit-linear-gradient(90deg, #805590,#66549d,#3455aa);
   //background: linear-gradient(90deg, #805590,#66549d,#3455aa);
-  background-image: url("assets/bk.png");
-  background-size: cover;
-
+  background: rgb(124,133,88);
+  background: radial-gradient(circle, rgba(124,133,88,1) 1%, rgba(68,74,48,1) 53%, rgba(45,50,43,1) 100%);
   overflow-y: hidden;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .card{
@@ -13,5 +13,14 @@ body{
   background: radial-gradient(circle, rgba(124,133,88,1) 1%, rgba(68,74,48,1) 53%, rgba(45,50,43,1) 100%);
   color: #bbde86;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #5f6c45, 0 0 40px #2d322b, 0 0 50px #bbde86, 0 0 60px #e60073, 0 0 70px #bbde86;
+  background-size: contain;
+}
+.characteristics{
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 10px;
+  color: black;
+  font-weight: bold;
+
 }
 

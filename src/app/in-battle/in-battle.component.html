@@ -7,15 +7,14 @@
       <p>здоровье:{{round.opponent.hp}}</p>
       <p>уровень: {{round.opponent.shop.level}}</p>
     </div>
-    <div class="topDiv" style="display:flex; justify-content: space-evenly">
+    <hr>
+    <div class="topDiv" style="display:flex; justify-content: space-evenly; height: auto">
     <div *ngFor="let card of round.opponentCard"
-         style="display: flex; ">
+         style="display: flex; height: auto">
       <app-card-on-the-field [card]="card" [attackCard]="!round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
                              [defenceCard]="round.playerAttack && round.opponentCard.indexOf(card)==round.opponentCardIndex"
       ></app-card-on-the-field>
-
     </div>
-
     </div>
 
     <div class="BottomDiv" style="display: flex; justify-content: space-evenly">
@@ -28,9 +27,8 @@
     </div>
 
     </div>
-    <hr class="middle">
+
     <div class="stataPlayer">
-<!--      <p>вы:</p>-->
       <p>здоровье:{{round.player.hp}}</p>
       <p>уровень:{{round.player.shop.level}}</p>
     </div>
