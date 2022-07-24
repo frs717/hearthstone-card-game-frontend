@@ -17,6 +17,12 @@ body{
   height: 150px;
   width: 100px;
 }
+
+.card:hover{
+  transition: .7s;
+  width: 150px;
+  height: 200px;
+}
 .characteristics{
   display: flex;
   justify-content: space-between;
