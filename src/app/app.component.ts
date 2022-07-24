@@ -133,7 +133,7 @@ this.isWin = JSON.parse(payload.body).winner;
     if (this.stompClient != null) {
       this.stompClient.disconnect();
     }
-    var socket = new SockJS('https://hearthstone-card-game-back.herokuapp.com/ws');
+    var socket = new SockJS('http://localhost:8080/ws');
     this.stompClient = Stomp.over(socket);
     this.username = this.info.name;
     this.stompClient.connect({}, this.onCreated,  this.onConnectedError);
@@ -147,7 +147,7 @@ this.isWin = JSON.parse(payload.body).winner;
     //lobbyId = document.querySelector('#lobbyId').value.trim();
     // if (form.form.value.name != null && form.form.value.lobbyId != null) {
 
-    var socket = new SockJS('https://hearthstone-card-game-back.herokuapp.com/ws');
+    var socket = new SockJS('http://localhost:8080/ws');
     this.stompClient = Stomp.over(socket);
     this.stompClient.connect({}, this.onJoined, this.onConnectedError);
     this.username = this.info.name;
