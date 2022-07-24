@@ -1,3 +1,3 @@
-app.listen(PORT, '0.0.0.0', function () {
+app.listen(process.env.PORT || 3000, function(){
   console.log("Node app is running at localhost:" + app.get('port'));
-})
+});
