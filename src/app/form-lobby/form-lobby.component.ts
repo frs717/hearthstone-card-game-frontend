@@ -70,7 +70,7 @@ export class FormLobbyComponent implements OnInit {
         alert("Такого лобби не существует")
       }
     }
-    xhr.open("GET", `http://localhost:8080/lobby.check?id=${this.form.value.idGame}`)
+    xhr.open("GET", `https://hearthstone-card-game-back.herokuapp.com/lobby.check?id=${this.form.value.idGame}`)
 
     xhr.send()
     // AppComp.setForm(this);
