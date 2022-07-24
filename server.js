@@ -1,16 +1,3 @@
-//Install express server
-const express = require('express');
-const path = require('path');
-
-const app = express();
-
-// Serve only the static files form the dist directory
-app.use(express.static(__dirname + '/dist/hearthstone-card-game-angular'));
-
-app.get('/*', function(req,res) {
-
-  res.sendFile(path.join(__dirname+'/dist/hearthstone-card-game-angular/src/index.html'));
-});
-
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+app.listen(PORT, '0.0.0.0', function () {
+  console.log("Node app is running at localhost:" + app.get('port'));
+})
