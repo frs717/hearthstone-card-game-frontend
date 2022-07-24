@@ -1,8 +1,39 @@
+'use strict';
+
+/* Подключаем Zone.js для сервера */
+require('zone.js/dist/zone-node');
+
 const express = require('express');
-const path = require('path');
+const ngUniversal = require('@nguniversal/express-engine');
+
+const appServer = require('./dist-server/main.bundle');
+
+/* Рендеринг на стороне сервера */
+function angularRouter(req, res) {
+
+  res.render('index', { req, res });
+
+}
+
 const app = express();
-app.use(express.static(__dirname + '/dist/hearthstone-card-game'));
-app.get('/*', function(req,res) {
-  res.sendFile(path.join(__dirname+
-    '/dist/hearthstone-card-game/index.html'));});
-app.listen(process.env.PORT || 8080);
+
+/* Направляем роут в корень нашего приложения*/
+app.get('/', angularRouter);
+
+/* Отдаем статические файлы генерируемые CLI  (index.html, CSS? JS, assets...) */
+app.use(express.static(`${__dirname}/dist`));
+
+/*Конфигурируем движок Angular Express */
+app.engine('html', ngUniversal.ngExpressEngine({
+  bootstrap: appServer.AppServerModuleNgFactory
+}));
+app.set('view engine', 'html');
+app.set('views', 'dist');
+
+/* Direct all routes to index.html, where Angular will take care of routing */
+app.get('*', angularRouter);
+app.post('*', angularRouter);
+
+app.listen(3000, () => {
+  console.log(`Listening on http://localhost:3000`);
+});
