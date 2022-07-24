@@ -2,10 +2,11 @@
   <div class="card" [ngStyle]="{'background-image':'url(assets/'+card.name+'.png)'}">
 <!--    <h1>{{card.name}}</h1>-->
     <div class="characteristics">
-      <div class="hp">{{card.hp}}</div>
       <div class="fight">{{card.damage}}</div>
+      <div class="hp">{{card.hp}}</div>
+
       <!--    <div class="skill">Способность:kdkdksdksldksldkskwkkwkw</div>-->
     </div>
   </div>
-  <button class="buy" (click)="buyCard()">Купить</button>
+  <button  class="buy cardBtns" (click)="buyCard()">Купить</button>
 </div>

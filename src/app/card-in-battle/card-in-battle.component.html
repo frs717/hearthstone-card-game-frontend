@@ -2,15 +2,16 @@
   <div class="card" [ngStyle]="{'background-image':'url(assets/'+card.name+'.png)'}">
 <!--    <h1>{{card.name}}</h1>-->
     <div class="characteristics">
-      <div class="hp">{{card.hp}}</div>
       <div class="fight">{{card.damage}}</div>
+      <div class="hp">{{card.hp}}</div>
+
     </div>
   </div>
   <div class="div">
-  <button (click)="sellActiveCard()">Продать</button>
+  <button class="cardBtns" (click)="sellActiveCard()">Продать</button>
   </div>
   <div style="display: flex; justify-content: center  ">
-  <button (click)="moveCardLeft()">&#8592;</button>
-  <button (click)="moveCardRight()">&#8594;</button>
+  <button class="cardBtns" (click)="moveCardLeft()">&#8592;</button>
+  <button class="cardBtns" (click)="moveCardRight()">&#8594;</button>
   </div>
 </div>

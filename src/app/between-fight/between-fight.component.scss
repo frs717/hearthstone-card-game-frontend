@@ -76,9 +76,12 @@ p{
   border: none;
   padding: 5px;
   border-radius: 10px;
+  background-color: rgba(248, 205, 34, 0.76);
 }
 
 .btnShop:hover{
+transition: .7s;
   cursor: pointer;
+  background-color: rgba(248, 205, 34, 0.89);
 }
 

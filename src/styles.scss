@@ -16,6 +16,7 @@ body{
   background-size:contain;
   height: 150px;
   width: 100px;
+  transition: .1s;
 }
 
 .card:hover{
@@ -39,4 +40,6 @@ body{
   font-weight: bold;
 }
 
-
+.cardBtns{
+  background-color: rgba(157, 108, 192, 0.73);
+}
