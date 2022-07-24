@@ -8,8 +8,16 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+
+  "engines": {
+    "node": "16.15.0",
+    "npm": "8.12.1"
+  },
   "private": true,
   "dependencies": {
+    "@angular/cli": "~14.0.3",
+    "@angular/compiler-cli": "^14.0.0",
+    "typescript": "~4.7.2",
     "@angular/animations": "^14.0.0",
     "@angular/common": "^14.0.0",
     "@angular/compiler": "^14.0.0",
