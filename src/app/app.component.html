@@ -1,7 +1,7 @@
 <body>
 <app-img-heartstone *ngIf="activeForm!=='betweenFight' && activeForm!=='inBattle'"></app-img-heartstone>
 <app-form-lobby *ngIf="activeForm=='lobby'" (isClickBtn) ="onChanged($event)" (onFormChanged) ="formChanged($event)"></app-form-lobby>
-<app-form-info *ngIf="activeForm=='info'" [players]="players"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
+<app-form-info *ngIf="activeForm=='info'" [players]="users"  [info]="info" (onFormChanged) ="formChanged($event)" (onLeave)="leave()"></app-form-info>
 <app-img-person *ngIf="activeForm!=='betweenFight' && activeForm!=='inBattle'"></app-img-person>
 <app-between-fight *ngIf="activeForm=='betweenFight'" [player]="player" [players]="players"  [stompClient]="stompClient" (onUpdateShop)="updateShop()"></app-between-fight>
 <!--<img class="logo-card" src="assets/card-main.png" alt="">-->

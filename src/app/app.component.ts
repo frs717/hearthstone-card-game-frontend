@@ -50,6 +50,7 @@ export class AppComponent implements OnInit {
 
   @Output() outputInfo= new EventEmitter<any>();
   players: any;
+  users: any;
   opponent:any;
   round: any;
   ngOnInit() {
@@ -166,7 +167,7 @@ this.isWin = JSON.parse(payload.body).winner;
 
   onMessageReceived = (payload: any) =>{
     let lobby = JSON.parse(payload.body);
-    this.players = lobby.users;
+    this.users = lobby.users;
     this.id = lobby.id;
   }
 

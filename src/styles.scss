@@ -19,19 +19,6 @@ body{
   transition: .1s;
 }
 
-.card:hover{
-  transition: .7s;
-  width: 155px;
-  height: 220px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  .characteristics{
-    transition: .7s;
-    padding: 12px 21px;
-    font-size: 20px;
-  }
-
-}
 .characteristics{
   display: flex;
   justify-content: space-between;
