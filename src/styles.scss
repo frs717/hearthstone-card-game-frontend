@@ -14,24 +14,11 @@ body{
   color: #bbde86;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #5f6c45, 0 0 40px #2d322b, 0 0 50px #bbde86, 0 0 60px #e60073, 0 0 70px #bbde86;
   background-size:contain;
-  height: 150px;
-  width: 100px;
+  height: 180px;
+  width: 120px;
   transition: .1s;
 }
 
-.card:hover{
-  transition: .7s;
-  width: 155px;
-  height: 220px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  .characteristics{
-    transition: .7s;
-    padding: 12px 21px;
-    font-size: 20px;
-  }
-
-}
 .characteristics{
   display: flex;
   justify-content: space-between;
